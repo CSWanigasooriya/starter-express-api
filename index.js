@@ -1,14 +1,15 @@
-import express, { json } from "express";
-import admin from "firebase-admin";
-import cookieParser from 'cookie-parser';
-import cors from 'cors';
-import serviceAccount from "./newtoneinstruments-firebase-adminsdk-1yr5j-d1f372486a.json" assert { type: "json" };
+const express = require("express");
+const cors = require('cors')
+const bodyParser = require('body-parser');
+const serviceAccount = require("./newtoneinstruments-firebase-adminsdk-1yr5j-d1f372486a.json");
+const admin = require("firebase-admin");
+const cookieParser = require('cookie-parser')
 
 const app = express();
 app.use(cors({ origin: true }))
-app.use(json());
+app.use(express.json());
 app.use(cookieParser());
-app.use(express.urlencoded({ extended: false }));
+app.use(bodyParser.urlencoded({ extended: false }));
 
 let port = process.env.PORT || 3000;
 // const functions = require('firebase-functions');
